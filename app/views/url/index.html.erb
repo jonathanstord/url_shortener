@@ -1,0 +1,9 @@
+<%= javascript_include_tag "clipboard" %>
+
+<div class="splash-container">
+  <div class="url_splash">
+    <p class="splash-subhead">
+      Your url has been created! Please use: <a id=generated_uri href=<%= @short_url %> value=<%= @short_url %>> <%= @short_url %></a><button onclick="copyToClipboard('generated_uri')">Copy To Clipboard</button></p><p id="copied" style="display:none">Copied!</p>
+    </p>
+  </div>
+</div>

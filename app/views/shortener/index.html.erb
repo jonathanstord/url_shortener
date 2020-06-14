@@ -1,0 +1,21 @@
+<%= javascript_include_tag "UrlValidator" %>
+
+<div class="splash-container">
+  <div class="splash">
+    <h1 class="splash-head">Url Shortener</h1>
+    <p class="splash-subhead">
+      We take that ugly url and make it... smaller
+    </p>
+    <p>
+      <%= form_with do %>
+        <%= label_tag(:q, "Shorten your url:") %>
+        <%= text_field_tag(:full_url, '' , {:onchange => "validateURL(this.value)"}) %>
+        <%= submit_tag("Submit", disabled: true, id: 'submission') %>
+      <% end %>
+    </p>
+    <div id='error_message' class="splash-subhead alert alert-danger" style="display:none">
+      <p>Please enter a valid url</p>
+    </div>
+  </div>
+</div>
+
