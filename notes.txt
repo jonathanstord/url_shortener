@@ -1,0 +1,21 @@
+Instructions:
+
+The only prequisite to spinning up this application or running the tests is docker and docker-compose.
+Everything should be handled within the docker container itself, so no need to install other dependencies.
+
+To build a docker image, use make setup. Once you have a docker image, you are good to run the tests or spin up the
+application.
+
+To run the tests, use make test. This will spin up a docker container, spin up the test db inside, run the tests, and then
+spin down the container.
+
+To run the application, use make server. This will spin up the application on port 8080. You can use ctrl + c to stop
+the application from running in the current terminal.
+
+Notes:
+
+The first time build is time consuming. Some of the gems (especially sassc) take a while to install. It will finish
+eventually. In a real application, I would spend more time optimizing this.
+
+The css on the page was inspired by one of the sample layouts for Pure CSS. It is free to use under the zLib license.
+Check here for details: https://purecss.io/layouts/

@@ -7,12 +7,6 @@
 # anything else that needs to happen before your server is started
 # for the first time
 setup:
-    @gem update --system
-    @gem install bundler
-	@bundle install --local
-	@rake db:drop RAILS_ENV=test
-	@rake db:create RAILS_ENV=test
-	@rake db:schema:load RAILS_ENV=test
 	@docker build -t shortener .
 
 # `make server` will be used after `make setup` in order to start
@@ -24,6 +18,9 @@ server:
 # `make test` will be used after `make setup` in order to run
 # your test suite.
 test:
+	@docker-compose down
 	@docker-compose up -d
+	@docker-compose run shortener rake db:create RAILS_ENV=test
+	@docker-compose run shortener rake db:schema:load RAILS_ENV=test
 	@docker-compose run shortener rspec
 	@docker-compose down
