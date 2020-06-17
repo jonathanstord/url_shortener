@@ -55,7 +55,7 @@ Rails.application.configure do
   logger           = ActiveSupport::Logger.new(STDOUT)
   logger.formatter = config.log_formatter
   config.logger = ActiveSupport::TaggedLogging.new(logger)
-  config.base_route = 'http://localhost:9292'
+  config.base_route = 'http://localhost:8080'
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true

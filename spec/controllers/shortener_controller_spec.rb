@@ -16,7 +16,8 @@ RSpec.describe ShortenerController, type: :controller do
       end
 
       it 'redirects to the url view page' do
-        expect(response).to redirect_to :controller => 'url', :action => 'index', short_url: '2Bj'
+        short_url = Rack::Utils.parse_query(URI.parse(response.location).query)['short_url']
+        expect(response).to redirect_to :controller => 'url', :action => 'index', short_url: short_url
       end
     end
 
@@ -67,7 +68,8 @@ RSpec.describe ShortenerController, type: :controller do
       end
       before do
         post :create, params: post_params
-        get :show, params: { id: '2Bj' }
+        short_url = Rack::Utils.parse_query(URI.parse(response.location).query)['short_url']
+        get :show, params: { id: short_url }
       end
 
       it 'redirects the user' do

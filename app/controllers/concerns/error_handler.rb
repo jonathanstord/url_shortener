@@ -8,6 +8,7 @@ module ErrorHandler
       rescue_from ArgumentError, with: :validation_failure
       rescue_from ActionController::ParameterMissing, with: :validation_failure
       rescue_from ActiveRecord::RecordNotFound, with: :not_found
+      rescue_from ActionController::RoutingError, with: :not_found
     end
   end
 
